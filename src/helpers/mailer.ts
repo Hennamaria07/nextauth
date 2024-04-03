@@ -24,7 +24,4 @@ export const sendEmail = async ({email, emailType, userId}: any) => {
     } catch (error: any) {
         throw new Error(error.message)
     }
-<<<<<<< HEAD
   }
-=======
->>>>>>> cdcf035acb780466a882e6d384d6c39c46605e81
