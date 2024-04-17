@@ -5,20 +5,18 @@ const userSchema = new mongoose.Schema(
         username: {
             type: String,
             required: true,
+            unique: true,
             trim: true,
-            lowercase: true,
-            unique: true
+            lowercase: true
         },
         email: {
             type: String,
             required: true,
-            trim: true,
-            lowercase: true,
             unique: true
         },
-        pasword: {
+        password: {
             type: String,
-            required: true
+            required: true,
         },
         isVerified: {
             type: Boolean,
@@ -29,16 +27,11 @@ const userSchema = new mongoose.Schema(
             default: false
         },
         forgotPasswordToken: String,
-        forgotPasswordTokenExpiry: Date,
+        forgotPasswordExpiry: Date,
         verifyToken: String,
-        verifyTokenExpiry: Date,
+        VerifyTokenExpiry: Date
     }
 )
 
-//next js uses it's work in edge computing
-//it doesn't konw that it is coonected already to mdb or not
-
-//if the model is already created then do this mongoose.model.users this will gave the model refernce
-const User = mongoose.model.users || mongoose.model("users", userSchema);
-
+const User = mongoose.models.users || mongoose.model("users", userSchema);
 export default User;
