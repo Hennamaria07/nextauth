@@ -29,7 +29,7 @@ const userSchema = new mongoose.Schema(
         forgotPasswordToken: String,
         forgotPasswordExpiry: Date,
         verifyToken: String,
-        VerifyTokenExpiry: Date
+        verifyTokenExpiry: Date // Corrected field name
     }
 )
 

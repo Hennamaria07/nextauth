@@ -10,6 +10,7 @@ try {
         return NextResponse.json({error: "invalid access token", success: false}, {status: 401})
     }
     const user = await User.findById(userId).select("-password");
+    // console.log(user)
     return NextResponse.json(
         {
             message: "User fetched",

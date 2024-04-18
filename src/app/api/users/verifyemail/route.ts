@@ -20,10 +20,11 @@ export const POST = async (request: NextRequest) => {
                 }
             )
         }
+        // console.log('token in verify->', token)
         const user = await User.findOne(
             {
                 verifyToken: token,
-                verifyTokenExpiry: {$gt: Date.now()}
+                // verifyTokenExpiry: { $gt: Date.now() }
             }
         )
         if(!user) {

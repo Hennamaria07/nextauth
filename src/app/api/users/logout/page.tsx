@@ -1,10 +1,9 @@
-import dbConnection from "@/dbConfig/dbConnection";
-import User from "@/models/user.model";
+import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
 
-export const GET = async (request: NextRequest) => {
+const GET = (request: NextRequest) => {
     try {
-        return NextResponse.json(
+       const response = NextResponse.json(
             {
                 message: "Logout successfully",
                 success: true
@@ -12,13 +11,17 @@ export const GET = async (request: NextRequest) => {
             {
                 status: 200
             }
-        ).cookies.set("token", "", 
+        )
+        console.log(response)
+       response.cookies.set("token", "", 
             {
-                httpOnly: true,
-                expires: new Date(0)
+                httpOnly: true
             }
         )
+        return response
     } catch (error: any) {
         return NextResponse.json({error: error.message}, {status: 500})
     }
 }
+
+export default GET;
